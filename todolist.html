@@ -58,3 +58,66 @@
 </body>
 
 </html>
+
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+#task-form input,
+#task-form select {
+  margin-right: 10px;
+}
+
+#task-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.task-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+}
+
+.task-item .task-title {
+  font-weight: bold;
+}
+
+.task-item .task-info {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #888;
+}
+
+
+function addTask() {
+  var taskInput = document.getElementById("task-input");
+  var deadlineInput = document.getElementById("deadline-input");
+  var priorityInput = document.getElementById("priority-input");
+  var labelInput = document.getElementById("label-input");
+
+  var taskList = document.getElementById("task-list");
+
+  var taskItem = document.createElement("li");
+  taskItem.classList.add("task-item");
+
+  var taskTitle = document.createElement("span");
+  taskTitle.classList.add("task-title");
+  taskTitle.innerText = taskInput.value;
+
+  var taskInfo = document.createElement("span");
+  taskInfo.classList.add("task-info");
+  taskInfo.innerText = "Deadline: " + deadlineInput.value + ", Priority: " + priorityInput.value + ", Label: " + labelInput.value;
+
+  taskItem.appendChild(taskTitle);
+  taskItem.appendChild(taskInfo);
+  taskList.appendChild(taskItem);
+
+  taskInput.value = "";
+  deadlineInput.value = "";
+  priorityInput.value = "low";
+  labelInput.value = "";
